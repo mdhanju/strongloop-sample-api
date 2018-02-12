@@ -1,0 +1,65 @@
+{
+  "name": "funding",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "cvv": {
+      "type": "string"
+    },
+    "expiryMonth": {
+      "type": "string",
+      "required": true
+    },
+    "expiryYear": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "string"
+    },
+    "addressId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "address": {
+      "type": "hasOne",
+      "model": "address",
+      "foreignKey": "addressId"
+    },
+    "activity": {
+      "type": "hasMany",
+      "model": "activity",
+      "foreignKey": "fundingId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

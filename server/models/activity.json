@@ -1,0 +1,74 @@
+{
+  "name": "activity",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "scope": {
+    "include": [
+      {
+        "relation": "funding",
+        "scope": {
+          "fields": ["number", "alias", "type", "name"]
+        }
+      },
+      {
+        "relation": "user",
+        "scope": {
+          "fields": ["firstName", "lastName", "email"]
+        }
+      }
+    ]
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "fundingId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "added": {
+      "type": "date"
+    },
+    "edited": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "funding": {
+      "type": "belongsTo",
+      "model": "funding",
+      "foreignKey": "fundingId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,63 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "age": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "addressId": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "default": "US"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "address": {
+      "type": "hasMany",
+      "model": "address",
+      "foreignKey": "addressId"
+    },
+    "funding": {
+      "type": "hasMany",
+      "model": "funding",
+      "foreignKey": "userId"
+    },
+    "activity": {
+      "type": "hasMany",
+      "model": "activity",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+      {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "mdb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mdb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mdb",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "mdb",
+    "public": false
+  },
+  "funding": {
+    "dataSource": "mdb",
+    "public": false
+  },
+  "address": {
+    "dataSource": "mdb",
+    "public": false
+  },
+  "activity": {
+    "dataSource": "mdb",
+    "public": true
+  },
+  "user": {
+    "dataSource": "mdb",
+    "public": true
+  }
+}
